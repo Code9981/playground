@@ -83,7 +83,7 @@
     // let searchString = document.getElementById('searchString').value || 'https://weread.qq.com/wrpage/book/review/';
     // let replaceString = document.getElementById('replaceString').value || 'https://weread.qq.com/review-detail/reviewid=';
 
-    let output = input.split(searchString).join(replaceString);
+    let output = input.split(searchString).join(replaceString)+'&type=1';
     document.getElementById('outputString').value = output;
 console.log("Output:", output);
 }
