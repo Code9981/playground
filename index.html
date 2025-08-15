@@ -47,42 +47,25 @@
 </head>
 <body>
     <div class="container">
-        <h2 style="color: blue;">旧版想法转换器</h2>
-                   <p style="color: yellow;">使用步骤：<br>
-      1. 在旧版想法的404页面的右上角点击三个点， 选择‘复制链接’
-      <br>2. 粘贴链接到下框
+    <h2 style="color: blue;">旧版想法转换器</h2>
+     <p style="color: yellow;">使用步骤：
+       <br>1. 在旧版想法的404页面的右上角点击三个点， 选择‘复制链接’
+       <br>2. 粘贴链接到下框
        <br>3. 点击转换按钮， 会生成新链接在第二个文字框
        <br>4. 点击打开新链接，应该会出现想法
        <br>5. 如果打开链接后， 没看到想法内容及书籍信息，出现"<b><span class="red-bold-text"> 请从微信读书app参与活动</span></b>"字样， 点击页面右上角三个点"<b><span class="red-bold-text">...</span></b>", 然后选择"<b><span class="red-bold-text">用默认浏览器打开 </span></b>" 就会看到想法 </p>
-         
- <h3>复制粘贴旧链接到下框</h3>
+     <h3>复制粘贴旧链接到下框</h3>
 <!-- This line provide the space for typing in the text-->  
         <textarea id="inputString" rows="4" placeholder="复制粘贴旧链接..."></textarea>
-
 <!-- Thest two lines are for random replacement     备用功能    任意替换
-
 <input type="text" id="searchString" placeholder="String to replace (default: 'https://weread.qq.com/wrpage/book/review/')">
-        <input type="text" id="replaceString" placeholder="Replacement string (default: 'https://weread.qq.com/review-detail/reviewid=')">
+<input type="text" id="replaceString" placeholder="Replacement string (default: 'https://weread.qq.com/review-detail/reviewid=')">
 -->
         <button onclick="transformString()">点击转换</button>
         <h3>新链接:</h3>
         <input type="text" id="outputString" readonly>
  <!-- <button onclick="copyText()">复制粘贴到剪贴板</button>  -->
         <button onclick="goToWebsite()">打开新链接</button>
-            
-    <!--
-         <h3>友情提示:</h3>
-        <p style="color: yellow;"><u>如果打开链接后， 看到"请从微信读书app参与活动“字样， 点击右上角三个点"...", 然后选择"用默认浏览器打开" </u> </p>-->
-
-        
-<!--<a href="https://weread.qq.com/web/reader/f1e328e072710bfaf1e87e9" target="_blank">打开想法</a>
-      
-        <button onclick="navigateToWeRead()">跳转到微信读书</button>
-
-        -->
-
-
-
 
     </div>
 
@@ -91,11 +74,6 @@
     let input = document.getElementById('inputString').value;
     let searchString = 'https://weread.qq.com/wrpage/book/review/'; // 旧想法链接模式
     let replaceString = 'https://weread.qq.com/review-detail?reviewid='; // 新想法链接模式
-
-    // 下面是备用逻辑（已注释） JavaScript的注释 用的是双斜杠 激活这个 可以用于更灵活字符串代替
-    // let searchString = document.getElementById('searchString').value || 'https://weread.qq.com/wrpage/book/review/';
-    // let replaceString = document.getElementById('replaceString').value || 'https://weread.qq.com/review-detail/reviewid=';
-
     let output = input.split(searchString).join(replaceString)+'&type=1';
     document.getElementById('outputString').value = output;
 console.log("Output:", output);
@@ -122,27 +100,6 @@ console.log("Output:", output);
       window.open(url, '_blank');
     }
 
-/*
-
-  function navigateToWeRead() {
-    wx.ready(function () {
-      wx.navigateToMiniProgram({
-        appId: 'wxdf0b8f269b2210bb',  // 微信读书小程序的 appId
-        path: 'pages/review-detail/review-detail?reviewid=abcd3wr3r',  // 你希望跳转的页面路径和参数
-        extraData: {
-          link: 'https://weread.qq.com/'
-        },
-        success: function (res) {
-          console.log('成功跳转到微信读书', res);
-        },
-        fail: function (err) {
-          console.error('跳转失败', err);
-        }
-      });
-    });
-  } 
-  */   
- 
   </script>
 </body>
 </html>
