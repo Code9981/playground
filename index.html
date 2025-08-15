@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 style="color: blue;"><u>旧版想法转换器</u></h2>
+        <h2 style="color: blue;">旧版想法转换器</h2>
                    <p style="color: yellow;">使用步骤：<br>
       1. 在旧版想法的404页面的右上角点击三个点， 选择‘复制链接’
       <br>2. 粘贴链接到下框
@@ -89,10 +89,10 @@
     <script>
       function transformString() {
     let input = document.getElementById('inputString').value;
-    let searchString = 'https://weread.qq.com/wrpage/book/review/';
-    let replaceString = 'https://weread.qq.com/review-detail?reviewid=';
+    let searchString = 'https://weread.qq.com/wrpage/book/review/'; // 旧想法链接模式
+    let replaceString = 'https://weread.qq.com/review-detail?reviewid='; // 新想法链接模式
 
-    // 下面是备用逻辑（已注释） JavaScript的注释 用的是双斜杠
+    // 下面是备用逻辑（已注释） JavaScript的注释 用的是双斜杠 激活这个 可以用于更灵活字符串代替
     // let searchString = document.getElementById('searchString').value || 'https://weread.qq.com/wrpage/book/review/';
     // let replaceString = document.getElementById('replaceString').value || 'https://weread.qq.com/review-detail/reviewid=';
 
@@ -122,13 +122,13 @@ console.log("Output:", output);
       window.open(url, '_blank');
     }
 
-
+/*
 
   function navigateToWeRead() {
     wx.ready(function () {
       wx.navigateToMiniProgram({
         appId: 'wxdf0b8f269b2210bb',  // 微信读书小程序的 appId
-        path: 'pages/review-detail/review-detail?reviewid=771474228_7vxgxst1y',  // 你希望跳转的页面路径和参数
+        path: 'pages/review-detail/review-detail?reviewid=abcd3wr3r',  // 你希望跳转的页面路径和参数
         extraData: {
           link: 'https://weread.qq.com/'
         },
@@ -140,7 +140,8 @@ console.log("Output:", output);
         }
       });
     });
-  }    
+  } 
+  */   
  
   </script>
 </body>
