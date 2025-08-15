@@ -1,3 +1,3 @@
 # playground
 
-This repository is for testing out Github Desktop
+This repository is for testing 
