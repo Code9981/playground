@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打开吧</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>打开吧</h2>
+ <h3>复制粘贴旧链接在这里</h3>
+<!-- This line provide the space for typing in the text-->  
+        <textarea id="inputString" rows="4" placeholder="Enter your string here..."></textarea>
+
+<!-- Thest two lines are for random replacement     备用功能    任意替换
+
+<input type="text" id="searchString" placeholder="String to replace (default: 'https://weread.qq.com/wrpage/book/review/')">
+        <input type="text" id="replaceString" placeholder="Replacement string (default: 'https://weread.qq.com/review-detail/reviewid=')">
+-->
+        <button onclick="transformString()">点击转换</button>
+        <h3>新链接:</h3>
+        <input type="text" id="outputString" readonly>
+  <button onclick="copyText()">复制粘贴到剪贴板</button>  <button onclick="goToWebsite()">打开新链接</button>
+      
+<a href="weread://review-detail?reviewid=771474228_7vxgxst1y" target="_blank">打开想法</a>
+      
+        <button onclick="navigateToWeRead()">跳转到微信读书</button>
+
+
+
+
+    </div>
+
+    <script>
+      function transformString() {
+    let input = document.getElementById('inputString').value;
+    let searchString = 'https://weread.qq.com/wrpage/book/review/';
+    let replaceString = 'https://weread.qq.com/review-detail?reviewid=';
+
+    // 下面是备用逻辑（已注释） JavaScript的注释 用的是双斜杠
+    // let searchString = document.getElementById('searchString').value || 'https://weread.qq.com/wrpage/book/review/';
+    // let replaceString = document.getElementById('replaceString').value || 'https://weread.qq.com/review-detail/reviewid=';
+
+    let output = input.split(searchString).join(replaceString);
+    document.getElementById('outputString').value = output;
+console.log("Output:", output);
+}
+
+    function copyText() {
+      var textBox = document.getElementById("outputString");
+      textBox.select();
+      document.execCommand("copy");
+      alert("新链接已复制到剪贴板!");
+    }
+         function goToWebsite() {
+      let url = document.getElementById('outputString').value.trim();
+      if (!url) {
+        alert("Please enter a URL.");
+        return;
+      }
+
+      // Add https:// if missing
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }
+
+      window.open(url, '_blank');
+    }
+
+
+
+  function navigateToWeRead() {
+    wx.ready(function () {
+      wx.navigateToMiniProgram({
+        appId: 'wxdf0b8f269b2210bb',  // 微信读书小程序的 appId
+        path: 'pages/review-detail/review-detail?reviewid=771474228_7vxgxst1y',  // 你希望跳转的页面路径和参数
+        extraData: {
+          link: 'https://weread.qq.com/'
+        },
+        success: function (res) {
+          console.log('成功跳转到微信读书', res);
+        },
+        fail: function (err) {
+          console.error('跳转失败', err);
+        }
+      });
+    });
+  }    
+ 
+  </script>
+</body>
+</html>
+           
